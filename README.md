@@ -22,11 +22,10 @@ règle :
 Brick-breaker est composé de 9 levels du plus simple au plus dur,
 le seul but est de finir les 9 levels en détruisant les briques 
 vous serez muni d'une plateforme et d'une petite balle pour detruire les briques.
-
 Serez vous à la hauteurs ?
 
-
-
+ 
+ 
 répartition des tâches :
 
 Leichnig Coriane : création et gestion des html et des css 
@@ -55,7 +54,7 @@ créé par Mohamed Amine Tarhouni
 sources et applications utilisé :
 ===============================
 
-
+  
 
 super mario world cup :
 
