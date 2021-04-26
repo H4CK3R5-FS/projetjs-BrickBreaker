@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(#2b1055, #7597de);
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+}
+
+header .logo {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    list-style: none;
+    margin-left: 20px;
+}
+
+header ul li a {
+    text-decoration: none;
+    padding: 6px 15px;
+    color: #fff;
+    border-radius: 20px;
+}
+
+header ul li a:hover {
+    background: #fff;
+    color: #2b1055;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    /* permet un degrade*/
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #1c0522, transparent);
+    z-index: 1000;
+}
+
+section img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+section img#moon {
+    mix-blend-mode: screen;
+}
+
+section img#mountains_front {
+    z-index: 10;
+}
+
+#text {
+    position: absolute;
+    right: -475px;
+    color: #fff;
+    white-space: nowrap;
+    font-size: 7.5vw;
+    /*font-size: 1.5em; // taille + ptite */
+    z-index: 9;
+}
+
+#btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 30px;
+    border-radius: 40px;
+    background: #fff;
+    color: #2b1055;
+    font-size: 1.5em;
+    z-index: 9;
+    transform: translateY(100px);
+}
+
+.Home,
+.Game {
+    position: relative;
+    padding: 100px;
+    background: #1c0522;
+}
+
+.Home h2 {
+    font-size: 6em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.Home p {
+    font-size: 2em;
+    color: #fff;
+    margin-bottom: 5%;
+}
+
+h1 {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #00ffff, 0 0 70px #00ffff, 0 0 80px #00ffff, 0 0 100px #00ffff;
+}
+
+h1:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de;
+}
+
+p {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de;
+}
+
+.Game h2 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.Game p {
+    font-size: 2em;
+    color: #fff;
+}
+
+.Game h2 f {
+    list-style: none;
+}
+
+.Game h2 f:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #00ffff, 0 0 70px #00ffff, 0 0 80px #00ffff, 0 0 100px #00ffff;
+}
+
+.Game .img.img {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.leftcolumn {
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+    margin-right: 4%;
+}
+
+.rightcolumn {
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+    margin-left: 4%;
+}
+
+.button {
+    /* position: absolute; */
+    margin-left: 50%;
+    margin-top: 2%;
+    transform: translateX(-50%);
+    padding: 1.5rem 2.5rem;
+    text-transform: uppercase;
+    background: rgba(255, 2, 2, 0.64);
+    border-radius: 20px 20px 20px 20px;
+    /* font-size: 2rem; */
+    box-shadow: 0 0 6px #eee;
+    cursor: pointer;
+    display: flex;
+    transition: 0.7s ease;
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://jcsatanas.fr/wp-content/uploads/2016/09/super-mario-run.jpg");
+    background-size: cover;
+}
+
+.button2 {
+    /* position: absolute; */
+    margin-left: 50%;
+    margin-top: 2%;
+    transform: translateX(-50%);
+    padding: 1.5rem 2.5rem;
+    text-transform: uppercase;
+    background: rgba(105, 237, 255, 0.64);
+    border-radius: 20px 20px 20px 20px;
+    /* font-size: 2rem; */
+    box-shadow: 0 0 6px #eee;
+    cursor: pointer;
+    display: flex;
+    transition: 0.7s ease;
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://store-images.microsoft.com/image/apps.37538.9007199266753446.e25d7e4d-1e0b-4508-9aeb-0505498dc344.f2d273e8-97ea-4820-890e-da73100b56db?w=672&h=378&q=80&mode=letterbox&background=%23FFE4E4E4&format=jpg");
+    background-size: cover;
+}
+
+.text {
+    margin: 0;
+    font-weight: bold;
+    transform: translateX(14px);
+    transition: 0.4s ease;
+}
+
+.fas {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: 0.4s ease;
+}
+
+
+/* mario */
+
+.button:hover .fas {
+    opacity: 1;
+    transform: translateX(10px);
+}
+
+.button:hover .text {
+    transform: translateX(-10px);
+}
+
+.button:hover {
+    filter: brightness(140%);
+}
+
+.button:active {
+    transform: scale(0.96) translateX(-50%);
+}
+
+
+/* brick breaker */
+
+.button2:hover .fas {
+    opacity: 1;
+    transform: translateX(10px);
+}
+
+.button2:hover .text {
+    transform: translateX(-10px);
+}
+
+.button2:hover {
+    filter: brightness(140%);
+}
+
+.button2:active {
+    transform: scale(0.96) translateX(-50%);
+}
+
+.Game .backtotop {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 30px;
+    border-radius: 40px;
+    background: #fff;
+    color: #2b1055;
+    font-size: 1.5em;
+    z-index: 9;
+    transform: translateY(100px);
+    align-items: center;
+    margin-top: -61%;
+}

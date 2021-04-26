@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Breakout</title>
+    <link rel="stylesheet" href="assets\css\style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <div class="loader">
+
+        <span class="lettre">L</span>
+        <span class="lettre">O</span>
+        <span class="lettre">A</span>
+        <span class="lettre">D</span>
+        <span class="lettre">I</span>
+        <span class="lettre">N</span>
+        <span class="lettre">G</span>
+        <span class="lettre">-</span>
+        <span class="lettre">G</span>
+        <span class="lettre">A</span>
+        <span class="lettre">M</span>
+        <span class="lettre">E</span>
+    </div>
+</head>
+
+<body>
+
+    <header>
+        <div class="title">
+
+            <span class="sans">B</span>
+            <span class="sans">r</span>
+            <span class="avec">i</span>
+            <span class="sans">c</span>
+            <span class="sans">k</span>
+            <span class="avec">-</span>
+            <span class="sans">B</span>
+            <span class="sans">r</span>
+            <span class="avec">e</span>
+            <span class="avec">A</span>
+            <span class="sans">k</span>
+            <span class="avec">e</span>
+            <span class="sans">r</span>
+        </div>
+
+
+    </header>
+
+    <div id="game"></div>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.17.0/dist/phaser.min.js"></script>
+    <script src="js\breakout.js"></script>
+
+    <div class="restart" id="restart">
+        <p class="text">
+            <a onClick="window.location.reload();">Restart</a>
+        </p>
+        <i class="fas fa-long-arrow-alt-right"></i>
+    </div>
+
+    <div class="back" id="back">
+        <p class="text">
+            <a onclick="history.go(-1)">back to menu</a>
+        </p>
+        <i class="fas fa-long-arrow-alt-right"></i>
+    </div>
+
+
+    <!--<button class="restart" onClick="window.location.reload();">Restart</button>
+    <input class="back" type="button" value="Retour" onclick="history.go(-1)">
+<input type="button" value="OK"/> -->
+
+
+</body>
+
+<footer>
+
+
+
+
+
+</footer>
+
+<script src="breakout.js"></script>
+
+</html>
