@@ -59,6 +59,10 @@ sources et applications utilisé :
 
 super mario world cup :
 
+https://www.deviantart.com/weakfoggy/art/RPG-Maker-MV-Mario-Overworld-1-583413819 animation mario 
+
+https://www.deviantart.com/thecrushedjoycon/art/Super-Mario-Bros-Mega-Tileset-Ver-2-842092790  pour la map
+
 https://www.webtips.com/ 
 
 tiled pour la création de la map 
