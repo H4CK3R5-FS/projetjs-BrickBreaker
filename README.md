@@ -1,9 +1,7 @@
 Projet js : BRICK-BREAKER et Super Mario World Cup 
-<<<<<<< HEAD
----------------------------------------------------
-=======
---------------------------------------------------
->>>>>>> 35e1a37251233d39cecac5dae57fe0d4c4afd352
+===================================================
+
+
 
 Tout démarre par une plateforme qui comporte 2 jeux : 
 
@@ -14,10 +12,8 @@ Tout démarre par une plateforme qui comporte 2 jeux :
 Le seul but c'est de S'AMUSER !!!!!
 
  
-<<<<<<< HEAD
-=======
+
  
->>>>>>> 35e1a37251233d39cecac5dae57fe0d4c4afd352
   BRICK-BREAKER : 
  =================
  
