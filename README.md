@@ -70,4 +70,16 @@ parcel pour organiser les fichier et faire des builds nécessaire
 
 
 
-brick-breaker :
+brick-breaker & menu :
+
+https://www.figma.com/
+
+https://themewagon.com/theme_tag/open-source/
+
+https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog
+
+https://fontawesome.com/icons?d=gallery&p=2&m=free
+
+NicePage open source.
+
+
