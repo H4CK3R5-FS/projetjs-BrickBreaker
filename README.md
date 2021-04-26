@@ -1,5 +1,9 @@
 Projet js : BRICK-BREAKER et Super Mario World Cup 
+<<<<<<< HEAD
 ---------------------------------------------------
+=======
+--------------------------------------------------
+>>>>>>> 35e1a37251233d39cecac5dae57fe0d4c4afd352
 
 Tout démarre par une plateforme qui comporte 2 jeux : 
 
@@ -10,6 +14,10 @@ Tout démarre par une plateforme qui comporte 2 jeux :
 Le seul but c'est de S'AMUSER !!!!!
 
  
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 35e1a37251233d39cecac5dae57fe0d4c4afd352
   BRICK-BREAKER : 
  =================
  
@@ -20,6 +28,8 @@ le seul but est de finir les 9 levels en détruisant les briques
 vous serez muni d'une plateforme et d'une petite balle pour detruire les briques.
 
 Serez vous à la hauteurs ?
+
+
 
 répartition des tâches :
 
@@ -33,5 +43,29 @@ Fournie William : finition des 9 levels avec les lifes des briques
 
  
   Super Mario World Cup : 
- =========================
+ ========================
+
+Êtes vous prêt à plonger dans l'univers mario avec le nouveau jeu 
+
+SUPER MARIO WORLD CUP !!!!
+
+Accompagnez Mario dans le nouveau jeu de plateforme 
+dans un monde totalement dingue 
+ecrasez vos ennemis et puis gagnez vos parties 
+
+créé par Mohamed Amine Tarhouni
+
+
+sources et applications utilisé :
+===============================
+
+
+
+super mario world cup :
+
+https://www.webtips.com/ 
+
+tiled pour la création de la map 
+
+parcel pour organiser les fichier et faire des builds nécessaire  
 
