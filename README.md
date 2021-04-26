@@ -1,4 +1,4 @@
-Projet js : BRICK-BREAKER et Super Mario World Cup |
+Projet js : BRICK-BREAKER et Super Mario World Cup 
 ----------------------------------------------------------
 
 Tout démarre par une plateforme qui comporte 2 jeux : 
@@ -10,6 +10,7 @@ Tout démarre par une plateforme qui comporte 2 jeux :
 Le seul but c'est de S'AMUSER !!!!!
 
  =================
+ 
 | BRICK-BREAKER : |
  =================
  
