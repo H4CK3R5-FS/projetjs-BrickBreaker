@@ -11,7 +11,6 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    display: flex;
     justify-content: center;
     align-items: center;
     background-image: url("https://images2.alphacoders.com/102/thumb-1920-1023534.jpg");
@@ -226,7 +225,7 @@ h1 {
 .restart {
     /* margin-bottom: 16px; */
     position: fixed;
-    margin-left: -8%;
+    margin-left: 8%;
     margin-top: -23%;
     transform: translateX(-50%);
     padding: 1.5rem 2.5rem;
@@ -281,7 +280,7 @@ h1 {
 .back {
     /* margin-bottom: 16px; */
     position: absolute;
-    margin-left: -8%;
+    margin-left: 8%;
     margin-top: -12%;
     transform: translateX(-50%);
     padding: 1.5rem 2.5rem;

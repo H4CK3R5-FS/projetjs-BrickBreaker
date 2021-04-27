@@ -1,16 +1,13 @@
 let player,
     ball,
-    blueBricks,
-    violetBricks,
-    greenBricks,
-    yellowBricks,
-    redBricks,
-    cursors;
-//  class SceneMain extends Phaser.scene{
-//    constructor(){
-//      super("SceneMain")
-//    }
-//  }
+    cursors,
+    BRICKS,
+
+    interval = 0;
+
+H = 40;
+D = 20;
+
 let gameStarted = false;
 
 const config = {
@@ -59,29 +56,30 @@ function preload() {
         "Background",
         "https://www.francetvinfo.fr/pictures/YJz5kCPGjhO5-1HG_lNaqDe89Tk/752x423/2020/10/22/php8UWHE3.jpg"
     );
-    this.load.image("paddle", "assets/img/paddle.png");
-    this.load.image("ball", "assets/img/Ball.png");
-    this.load.image("bluebrick", "assets/img/Blue Brick.png");
-    this.load.image("greenbrick", "assets/img/Green Brick.png");
-    this.load.image("violetbrick", "assets/img/Violet Brick.png");
-    this.load.image("redbrick", "assets/img/Red Brick.png");
+    this.load.image("paddle" , "assets/img/paddle.png"       );
+    this.load.image("ball"   , "assets/img/Ball.png"         );
+
+    this.load.image("blue"   , "assets/img/Blue Brick.png"   );
+    this.load.image("green"  , "assets/img/Green Brick.png"  );
+    this.load.image("violet" , "assets/img/Violet Brick.png" );
+    this.load.image("red"    , "assets/img/Red Brick.png"    );
 }
 
 function create() {
     openingText = this.add.text(
         this.physics.world.bounds.width / 2,
-        this.physics.world.bounds.height / 2,
+        this.physics.world.bounds.height / 1.5,
         "Press SPACE to Start", {
-            fontFamily: "Monaco, Courier, monospace",
-            fontSize: "50px",
-            fill: "#fff",
-        }
+        fontFamily: "Monaco, Courier, monospace",
+        fontSize: "50px",
+        fill: "#fff",
+    }
     );
 
     openingText.setOrigin(0.5);
     //affichage du joueur
     player = this.physics.add.sprite(
-        700, // position x
+        635, // position x
         585, // position y
         "paddle" // l'identifiant d'image pour le sprite
     );
@@ -91,57 +89,30 @@ function create() {
         555, // y position
         "ball" // key of image for the sprite
     );
-    // Ajoute les briques violettes
-    violetBricks = this.physics.add.group({
-        key: "violetbrick",
-        immovable: true,
-        repeat: 11,
-        setXY: {
-            x: 80,
-            y: 110,
-            stepX: 100,
-        },
+
+
+
+    BRICKS = this.physics.add.group({ immovable: true })
+
+    let tabbrick = [
+       
+
+
+
+        ["red","red","red","red","red","","","red","red","red","red","red"],
+        [],
+        [],
+        [],
+    ]
+
+
+    tabbrick.reverse().forEach((element, i) => {
+
+        element.forEach((element2, j) => {
+
+            if (element2 != "") { BRICKS.create(95 + j * 100, (8 - i) * H + D, element2) }
+        });
     });
-    // Ajoute des briques bleues
-    blueBricks = this.physics.add.group({
-        key: "bluebrick",
-        immovable: true,
-        //Avec repeat réglée sur 11, Phaser créera 12 sprites dans ce groupe de sprites
-        repeat: 11,
-        setXY: {
-            x: 80,
-            y: 155,
-
-            //stepX est la longueur en pixels entre les sprites répétés sur l'axe des x.
-            stepX: 100,
-        },
-    });
-
-    // Ajoute les briques vertes
-    greenBricks = this.physics.add.group({
-        key: "greenbrick",
-        immovable: true,
-        repeat: 11,
-        setXY: {
-            x: 80,
-            y: 200,
-            stepX: 100,
-        },
-    });
-
-
-    // Ajoute les briques rouges
-    redBricks = this.physics.add.group({
-        key: "redbrick",
-        immovable: true,
-        repeat: 11,
-        setXY: {
-            x: 80,
-            y: 245,
-            stepX: 100,
-        },
-    });
-
 
     //cursors est un object qui sert à déplacer le joueur en utilisant les touches du clavier
     cursors = this.input.keyboard.createCursorKeys();
@@ -152,23 +123,22 @@ function create() {
     //Ajouter la collision pour le ballon
     ball.setCollideWorldBounds(true);
     this.physics.world.checkCollision.down = false;
-    this.physics.add.collider(ball, violetBricks, hitBrick, null, this);
-    this.physics.add.collider(ball, greenBricks, hitBrick, null, this);
-    this.physics.add.collider(ball, blueBricks, hitBrick, null, this);
-    this.physics.add.collider(ball, redBricks, hitBrick, null, this);
+
     this.physics.add.collider(ball, player, hitPlayer, null, this);
+    this.physics.add.collider(ball, BRICKS, hitBrick, null, null);
+
     ball.setBounce(1, 1);
     player.setImmovable(true);
 
     // créer le texte "game over"
     gameOverText = this.add.text(
         this.physics.world.bounds.width / 2,
-        this.physics.world.bounds.height / 2,
-        "Game Over", {
-            fontFamily: "Monaco, Courier, monospace",
-            fontSize: "50px",
-            fill: "#fff",
-        }
+        this.physics.world.bounds.height / 1.5,
+        "Game Over !!!", {
+        fontFamily: "Monaco, Courier, monospace",
+        fontSize: "50px",
+        fill: "#03bcf4",
+    }
     );
 
     gameOverText.setOrigin(0.5);
@@ -181,10 +151,10 @@ function create() {
         this.physics.world.bounds.width / 2,
         this.physics.world.bounds.height / 2,
         "You won!", {
-            fontFamily: "Monaco, Courier, monospace",
-            fontSize: "50px",
-            fill: "#fff",
-        }
+        fontFamily: "Monaco, Courier, monospace",
+        fontSize: "50px",
+        fill: "#fff",
+    }
     );
 
     playerWonText.setOrigin(0.5);
@@ -197,15 +167,7 @@ function isGameOver(world) {
     return ball.body.y > world.bounds.height;
 }
 //cette fonction donne vrai si tous les briques sont disparus
-function isWon() {
-    return (
-        violetBricks.countActive() +
-        greenBricks.countActive() +
-        blueBricks.countActive() +
-        redBricks.countActive() ===
-        0
-    );
-}
+const isWon = () => !BRICKS.countActive()
 
 function update() {
     // on verifie si le ballon est sortie du canvas
@@ -238,7 +200,7 @@ function update() {
 
                 gameStarted = true;
 
-                ball.setVelocityY(-100); // la velocité du ballon(on peut dire que c'est la vitesse)
+                ball.setVelocityY(-450); // la velocité du ballon(on peut dire que c'est la vitesse)
                 openingText.setVisible(false);
             }
         }
@@ -247,11 +209,11 @@ function update() {
         if (cursors.left.isDown) {
             //si on appuie sur la flèche gauche
 
-            player.body.setVelocityX(-400);
+            player.body.setVelocityX(-2*375);
         } else if (cursors.right.isDown) {
             //si on appuie sur la flèche droite
 
-            player.body.setVelocityX(400);
+            player.body.setVelocityX(2*375);
         }
         // TODO: Logic for regular game time
     }
@@ -259,24 +221,55 @@ function update() {
 
 //cette fonction permet de gérer les collision entre le ballon et les briques
 function hitBrick(ball, brick) {
-    brick.disableBody(true, true);
+
+    brick.destroy()
+
+    switch (brick.texture.key) {
+
+        case "green" : BRICKS.create(brick.x, brick.y, 'red'   ); break;
+        case "blue"  : BRICKS.create(brick.x, brick.y, 'green' ); break;
+        case "violet": BRICKS.create(brick.x, brick.y, 'blue'  ); break;
+
+    }
+
+    interval++;
+
 
     if (ball.body.velocity.x === 0) {
         randNum = Math.random();
         if (randNum >= 0.5) {
             ball.body.setVelocityX(150);
+
         } else {
             ball.body.setVelocityX(-150);
         }
     }
 }
 
+
 //cette fonction permet de gérer les collision entre le ballon et le joueur
 function hitPlayer(ball, player) {
-    // on augmente la vélocité du ballon dès qu'elle touche le joueur
-    ball.setVelocityY(ball.body.velocity.y - 5);
 
-    let newXVelocity = Math.abs(ball.body.velocity.x) + 5;
+    if (interval >= 10) {
+        interval = 0;
+        BRICKS.children["entries"].forEach(element => {
+            element.y += H;
+            if (element.y > 600) {
+                gameOverText.setVisible(true);
+                ball.disableBody(true, true);
+            }
+        })
+    };
+
+    if (BRICKS.children["entries"].filter(element => element.y >= 25).length == 0) {
+        interval = 0;
+        BRICKS.children["entries"].forEach(element => { element.y += 5 * H })
+    }
+
+    // on augmente la vélocité du ballon dès qu'elle touche le joueur
+    ball.setVelocityY(ball.body.velocity.y - 20);
+
+    let newXVelocity = Math.abs(ball.body.velocity.x) + 20;
 
     // Si la balle est à gauche du joueur, assurez-vous que la vitesse X est négative
     if (ball.x < player.x) {
@@ -285,6 +278,7 @@ function hitPlayer(ball, player) {
         ball.setVelocityX(newXVelocity);
     }
 }
+
 
 const loader = document.querySelector('.loader');
 

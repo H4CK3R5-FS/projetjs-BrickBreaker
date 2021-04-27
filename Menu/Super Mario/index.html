@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎮 Super Mario Bros</title>
+    <link rel="stylesheet" href="assets\style\main.css" />
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.53.1/dist/phaser.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+
+<body>
+    <header>
+        <div class="title">
+
+            <span class="lettre">S</span>
+            <span class="lettre">u</span>
+            <span class="lettre">p</span>
+            <span class="lettre">e</span>
+            <span class="lettre">r</span>
+            <span class="lettre">-</span>
+            <span class="lettre">M</span>
+            <span class="lettre">a</span>
+            <span class="lettre">r</span>
+            <span class="lettre">i</span>
+            <span class="lettre">o</span>
+            <span class="lettre">-</span>
+            <span class="lettre">W</span>
+            <span class="lettre">o</span>
+            <span class="lettre">r</span>
+            <span class="lettre">l</span>
+            <span class="lettre">d</span>
+            <span class="lettre">-</span>
+            <span class="lettre">C</span>
+            <span class="lettre">U</span>
+            <span class="lettre">P</span>
+
+        </div>
+
+
+
+    </header>
+
+
+
+
+
+
+    <!-- -->
+    <div class="game" id="game">
+        <script src="./assets/js/dist/index.js"></script>
+
+    </div>
+
+
+    <div id="mario">
+
+        <div class="score"> Score: <br><span class="score-amount">0</span></div>
+
+        <div class="coins">Coins: <br><span class="coin-amount">0</span></div>
+
+        <div class="coins">Lives: <br><span class="live-amount">5</span></div>
+    </div>
+
+    <div class="touches">Press Start to restart, shift to pause and keyboard arrow to move forward, backward and jump !!!
+    </div>
+
+
+    <div class="restart" id="restart">
+        <p class="text">
+            <a onClick="window.location.reload();">Restart</a>
+        </p>
+        <i class="fas fa-long-arrow-alt-right"></i>
+    </div>
+
+    <div class="back" id="back">
+        <p class="text">
+            <a onclick="history.go(-2)">Menu</a>
+        </p>
+        <i class="fas fa-long-arrow-alt-right"></i>
+    </div>
+
+</body>
+
+</html>

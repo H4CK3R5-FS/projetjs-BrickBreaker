@@ -1,0 +1,341 @@
+@font-face {
+    font-family: 'mario';
+    src: url('New Super Mario Font U.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'mario', sans-serif;
+    scroll-behavior: smooth;
+}
+
+html {
+    background-image: url("https://www.nintendo-master.com/fichiers/2020/8/7/wallpaper-2020sm-1920-1080.jpg");
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    overflow: hidden;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* padding: 30px 100px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0px 117px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.score {
+    color: rgb(175, 77, 255);
+    font-family: 'mario';
+    font-size: 30px;
+}
+
+.coins {
+    color: rgb(175, 77, 255);
+    font-family: 'mario';
+    font-size: 30px;
+}
+
+.touches {
+    color: rgb(255 0 0);
+    font-family: 'mario';
+    font-size: 39px;
+    margin-top: 33%;
+    margin-left: 0%;
+}
+
+.restart {
+    /* margin-bottom: 16px; */
+    position: fixed;
+    margin-left: 3%;
+    margin-top: -22%;
+    transform: translateX(-50%);
+    padding: 1.5rem 2.5rem;
+    text-transform: uppercase;
+    /* background: rgba(225, 0, 255, 0.64); */
+    /* border-radius: 20px 20px 20px 20px; */
+    /* font-size: 2rem; */
+    /* box-shadow: 0 0 6px #eee; */
+    cursor: pointer;
+    display: flex;
+    transition: 0.7s ease;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    z-index: 4;
+}
+
+.text {
+    margin: 0;
+    font-weight: bold;
+    transform: translateX(14px);
+    transition: 0.4s ease;
+}
+
+.fas {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: 0.4s ease;
+}
+
+
+/* mario */
+
+.restart:hover .fas {
+    opacity: 1;
+    transform: translateX(10px);
+    color: gold;
+}
+
+.restart:hover .text {
+    transform: translateX(-10px);
+    color: gold;
+}
+
+.restart:hover {
+    filter: brightness(140%);
+}
+
+.restart:active {
+    transform: scale(0.96) translateX(-50%);
+}
+
+.back {
+    /* margin-bottom: 16px; */
+    /* margin-bottom: 16px; */
+    position: absolute;
+    margin-left: 3%;
+    margin-top: -30%;
+    transform: translateX(-50%);
+    padding: 1.5rem 2.5rem;
+    text-transform: uppercase;
+    /* background: rgba(225, 0, 255, 0.64); */
+    /* border-radius: 20px 20px 20px 20px; */
+    /* font-size: 2rem; */
+    /* box-shadow: 0 0 6px #eee; */
+    cursor: pointer;
+    display: flex;
+    transition: 0.7s ease;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    font-family: 'mario';
+    z-index: 4;
+}
+
+.text {
+    margin: 0;
+    font-weight: bold;
+    transform: translateX(14px);
+    transition: 0.4s ease;
+}
+
+.fas {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: 0.4s ease;
+}
+
+.back:hover .fas {
+    opacity: 1;
+    transform: translateX(10px);
+    color: gold;
+}
+
+.back:hover .text {
+    transform: translateX(-10px);
+    color: gold;
+}
+
+.back:hover {
+    filter: brightness(140%);
+}
+
+.back:active {
+    transform: scale(0.96) translateX(-50%);
+}
+
+#mario {
+    margin-top: 2%;
+}
+
+
+/* animation */
+
+.lettre {
+    color: #ffffff;
+    font-family: 'mario';
+    font-size: 80px;
+    letter-spacing: 15px;
+    margin-bottom: 150px;
+    animation: flash 1.2s linear infinite;
+}
+
+@keyframes flash {
+    0% {
+        color: #ff0000;
+        text-shadow: 0 0 7px #ff00008a;
+    }
+    20% {
+        color: #ff9100;
+        text-shadow: 0 0 7px #8f5100d8;
+    }
+    40% {
+        color: #fffb00;
+        text-shadow: 0 0 7px #ffee009a;
+    }
+    60% {
+        color: #5eff00;
+        text-shadow: 0 0 7px #118f00b2;
+    }
+    80% {
+        color: #00d9ff;
+        text-shadow: 0 0 7px #008f83af;
+    }
+    100% {
+        color: #8c00ff;
+        text-shadow: 0 0 7px #56008f8f;
+    }
+}
+
+.lettre:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.lettre:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.lettre:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.lettre:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.lettre:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.lettre:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.lettre:nth-child(7) {
+    animation-delay: 0.7s;
+}
+
+.lettre:nth-child(8) {
+    animation-delay: 0.8s;
+}
+
+.lettre:nth-child(9) {
+    animation-delay: 0.9s;
+}
+
+.lettre:nth-child(10) {
+    animation-delay: 1s;
+}
+
+.lettre:nth-child(11) {
+    animation-delay: 1.1s;
+}
+
+.lettre:nth-child(12) {
+    animation-delay: 1.2s;
+}
+
+.lettre:nth-child(13) {
+    animation-delay: 1.3s;
+}
+
+.lettre:nth-child(14) {
+    animation-delay: 1.4s;
+}
+
+.lettre:nth-child(15) {
+    animation-delay: 1.5s;
+}
+
+.lettre:nth-child(16) {
+    animation-delay: 1.6s;
+}
+
+.lettre:nth-child(17) {
+    animation-delay: 1.7s;
+}
+
+.lettre:nth-child(18) {
+    animation-delay: 1.8s;
+}
+
+.lettre:nth-child(19) {
+    animation-delay: 1.9s;
+}
+
+.lettre:nth-child(20) {
+    animation-delay: 2s;
+}
+
+.lettre:nth-child(21) {
+    animation-delay: 2.1s;
+}
+
+.lettre:nth-child(22) {
+    animation-delay: 2.2s;
+}
+
+.lettre:nth-child(23) {
+    animation-delay: 2.3s;
+}
+
+.lettre:nth-child(24) {
+    animation-delay: 2.4s;
+}
+
+.lettre:nth-child(25) {
+    animation-delay: 2.5s;
+}
+
+.lettre:nth-child(26) {
+    animation-delay: 2.6s;
+}
+
+.lettre:nth-child(27) {
+    animation-delay: 2.7s;
+}
+
+.lettre:nth-child(28) {
+    animation-delay: 2.8s;
+}
+
+.lettre:nth-child(29) {
+    animation-delay: 2.9s;
+}
+
+.lettre:nth-child(30) {
+    animation-delay: 3s;
+}

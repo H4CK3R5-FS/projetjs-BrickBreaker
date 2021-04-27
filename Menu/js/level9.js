@@ -58,6 +58,7 @@ function preload() {
     );
     this.load.image("paddle", "assets/img/paddle.png");
     this.load.image("ball", "assets/img/Ball.png");
+
     this.load.image("blue", "assets/img/Blue Brick.png");
     this.load.image("green", "assets/img/Green Brick.png");
     this.load.image("violet", "assets/img/Violet Brick.png");
@@ -94,23 +95,29 @@ function create() {
     BRICKS = this.physics.add.group({ immovable: true })
 
     let tabbrick = [
-        ["violet"],
+        ["","","","","","","","","","","",""],
+        ["","","","","","","","","","","",""],
+        ["","","","","","","","","","","",""],
+        ["","","","","","","","","","","",""],
+        ["","","","","","","","","","","",""],
         [],
+        ["","","","","","","","","","","",""],
+        ["","","","","","","","","","","",""],
+        ["","","","","","","","","","","",""],
+        ["","","","","","","","","","","",""],
+        ["","","","","","","","","","","",""],
         [],
+        ["red",""   ,""   ,""   ,"red",""   ,""   ,""   ,""   ,"red",""   ,""   ],
+        ["red",""   ,""   ,"red",""   ,"red",""   ,""   ,""   ,"red",""   ,""   ],
+        ["red",""   ,"red",""   ,""   ,""   ,"red",""   ,""   ,"red",""   ,""   ],
+        ["red","red",""   ,""   ,""   ,""   ,""   ,"red",""   ,"red",""   ,""   ],
+        ["red",""   ,""   ,""   ,""   ,""   ,""   ,""   ,"red","red",""   ,""   ],
         [],
-        [],
-        [],
-        [],
-        ["green"],
-        ["green"],
-        ["red", "", "red", "", "red", "", "red", "", "red", "", "red", "",],
-        ["", "green", "", "green", "", "green", "", "green", "", "green", "", "green"],
-        ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"],
-        [],
-        ["violet"],
-        ["green"],
-        ["blue"],
-        ["red"],
+        ["red", "red", "red", "blue", ""    , ""    , ""    , "blue", "red", "red", "red", ""   ],
+        ["red", ""   , ""   , "blue", "blue", ""    , ""    , "blue", "red", ""   , ""   , "red"],
+        ["red", "red", "red", "blue", ""    , "blue", ""    , "blue", "red", ""   , ""   , "red"],
+        ["red", ""   , ""   , "blue", ""    , ""    , "blue", "blue", "red", ""   , ""   , "red"],
+        ["red", "red", "red", "blue", ""    , ""    , ""    , "blue", "red", "red", "red", ""   ],
     ]
 
 
@@ -118,7 +125,7 @@ function create() {
 
         element.forEach((element2, j) => {
 
-            if (element2 != "") { BRICKS.create(95 + j * 100, (8 - i) * H + D, element2) }
+            if (element2 != "") { BRICKS.create(95 + j * 100, (10 - i) * H + D, element2) }
         });
     });
 
@@ -178,6 +185,20 @@ function isGameOver(world) {
 const isWon = () => !BRICKS.countActive()
 
 function update() {
+
+    if (gameStarted == true) { interval++ }
+
+    if (interval >= 32) {
+        interval = 0;
+
+        BRICKS.children["entries"].reverse().forEach(element => {
+            element.y += H;
+            if (element.y > 500) { element.destroy() }
+        })
+    }
+
+
+
     // on verifie si le ballon est sortie du canvas
     if (isGameOver(this.physics.world)) {
         //si le joueur a perdu
@@ -208,7 +229,7 @@ function update() {
 
                 gameStarted = true;
 
-                ball.setVelocityY(-450); // la velocité du ballon(on peut dire que c'est la vitesse)
+                ball.setVelocityY(-1); // la velocité du ballon(on peut dire que c'est la vitesse)
                 openingText.setVisible(false);
             }
         }
@@ -246,10 +267,10 @@ function hitBrick(ball, brick) {
     if (ball.body.velocity.x === 0) {
         randNum = Math.random();
         if (randNum >= 0.5) {
-            ball.body.setVelocityX(150);
+            ball.body.setVelocityX(1);
 
         } else {
-            ball.body.setVelocityX(-150);
+            ball.body.setVelocityX(-1);
         }
     }
 }
@@ -269,7 +290,7 @@ function hitPlayer(ball, player) {
         })
     };
 
-    if (BRICKS.children["entries"].filter(x => x.y >= 25).length == 0) {
+    if (BRICKS.children["entries"].filter(element => element.y >= 25).length == 0) {
         interval = 0;
         BRICKS.children["entries"].forEach(element => { element.y += 5 * H })
     }

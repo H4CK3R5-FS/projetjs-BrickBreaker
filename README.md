@@ -64,21 +64,53 @@ https://www.deviantart.com/thecrushedjoycon/art/Super-Mario-Bros-Mega-Tileset-Ve
 
 https://www.webtips.com/ 
 
+
 tiled pour la création de la map 
 
 parcel pour organiser les fichier et faire des builds nécessaire  
 
 
+Pour le son du jeu :
+
+
+-Tous les effets sonors de type son des pieces ou des monstres :
+
+https://mega.nz/folder/n7BilYgI#DbxjOiPqH7NGphj3o6OmkA/folder/3iIw2CCA
+
+-Musique du jeu : 
+
+https://downloads.khinsider.com/game-soundtracks/album/new-super-mario-bros.-wii/012%2520Course%2520Clear.mp3 
+
+
 
 brick-breaker & menu :
+
+
+
+Pour les maquettes des pages: 
 
 https://www.figma.com/
 
 https://themewagon.com/theme_tag/open-source/
 
+https://www.editorx.com/create/start-point?flow=ex_intro
+
+
+
+Pour la partie animation & mise en page :
+
+
+Chaine youtube avec beaucoup d'idée:
+
 https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog
 
+
+Permet d'ajouter des icones sans telecharger d'image:
+
 https://fontawesome.com/icons?d=gallery&p=2&m=free
+
+
+Pour crée une maquette pret à l'emploi:
 
 NicePage open source.
 

@@ -1,7 +1,12 @@
 let player,
     ball,
     cursors,
-    BRICKS;
+    BRICKS,
+
+    interval = 0;
+
+H = 40;
+D = 20;
 
 let gameStarted = false;
 
@@ -51,12 +56,13 @@ function preload() {
         "Background",
         "https://www.francetvinfo.fr/pictures/YJz5kCPGjhO5-1HG_lNaqDe89Tk/752x423/2020/10/22/php8UWHE3.jpg"
     );
-    this.load.image("paddle", "assets/img/paddle.png");
-    this.load.image("ball", "assets/img/Ball.png");
-    this.load.image("bluebrick", "assets/img/Blue Brick.png");
-    this.load.image("greenbrick", "assets/img/Green Brick.png");
-    this.load.image("violetbrick", "assets/img/Violet Brick.png");
-    this.load.image("redbrick", "assets/img/Red Brick.png");
+    this.load.image("paddle" , "assets/img/paddle.png"       );
+    this.load.image("ball"   , "assets/img/Ball.png"         );
+
+    this.load.image("blue"   , "assets/img/Blue Brick.png"   );
+    this.load.image("green"  , "assets/img/Green Brick.png"  );
+    this.load.image("violet" , "assets/img/Violet Brick.png" );
+    this.load.image("red"    , "assets/img/Red Brick.png"    );
 }
 
 function create() {
@@ -88,16 +94,67 @@ function create() {
 
     BRICKS = this.physics.add.group({ immovable: true })
 
-    for (let i = 0; i < 11; i++) { BRICKS.create(80 + i * 100, 110, "violetbrick") }
-    for (let i = 0; i < 11; i++) { BRICKS.create(80 + i * 100, 65, "violetbrick") }
+    let tabbrick = [
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"red"  ],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"red"   ,"red"  ],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"red"   ,"red"   ,"red"  ],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"red"   ,"red"   ,"red"   ,"red"  ],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,"red"   ,"red"   ,"red"   ,"red"   ,"red"  ],
+        [""      ,""      ,""      ,""      ,""      ,""      ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"  ],
+        [""      ,""      ,""      ,""      ,""      ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"  ],
+        [""      ,""      ,""      ,""      ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"  ],
+        [""      ,""      ,""      ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"  ],
+        [""      ,""      ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"  ],
+        [""      ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"  ],
+        ["red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"  ],
+        [],
+        [],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"green"],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"green" ,"green"],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"green" ,"green" ,"green"],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"green" ,"green" ,"green" ,"green"],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,"green" ,"green" ,"green" ,"green" ,"green"],
+        [""      ,""      ,""      ,""      ,""      ,""      ,"green" ,"green" ,"green" ,"green" ,"green" ,"green"],
+        [""      ,""      ,""      ,""      ,""      ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green"],
+        [""      ,""      ,""      ,""      ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green"],
+        [""      ,""      ,""      ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green"],
+        [""      ,""      ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green"],
+        [""      ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green"],
+        ["green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green" ,"green"],
+        [],
+        [],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"blue" ],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"blue"  ,"blue" ],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"blue"  ,"blue"  ,"blue" ],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"blue"  ,"blue"  ,"blue"  ,"blue" ],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue" ],
+        [""      ,""      ,""      ,""      ,""      ,""      ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue" ],
+        [""      ,""      ,""      ,""      ,""      ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue" ],
+        [""      ,""      ,""      ,""      ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue" ],
+        [""      ,""      ,""      ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue" ],
+        [""      ,""      ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue" ],
+        [""      ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue" ],
+        ["blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue"  ,"blue" ],
+        [],
+        [],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"violet","red"  ],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"violet",       ],
+        [""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,"violet",       ],
+        ["red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"violet",       ],
+        ["red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"violet",       ],
+        ["red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"red"   ,"violet",       ],
+        ["violet","violet","violet","violet","violet","violet","violet","violet","violet","violet","violet",       ],
+        [],
+    ]
 
-    for (let i = 0; i < 11; i++) { BRICKS.create(80 + i * 100, 155, "bluebrick") }
 
-    for (let i = 0; i < 11; i++) { BRICKS.create(80 + i * 100, 245, "greenbrick") }
-    for (let i = 0; i < 11; i++) { BRICKS.create(80 + i * 100, 290, "greenbrick") }
+    tabbrick.reverse().forEach((element, i) => {
 
-    for (let i = 0; i < 11; i++) { BRICKS.create(80 + i * 100, 335, "redbrick") }
+        element.forEach((element2, j) => {
 
+            if (element2 != "") { BRICKS.create(95 + j * 100, (8 - i) * H + D, element2) }
+        });
+    });
 
     //cursors est un object qui sert à déplacer le joueur en utilisant les touches du clavier
     cursors = this.input.keyboard.createCursorKeys();
@@ -108,7 +165,7 @@ function create() {
     //Ajouter la collision pour le ballon
     ball.setCollideWorldBounds(true);
     this.physics.world.checkCollision.down = false;
-  
+
     this.physics.add.collider(ball, player, hitPlayer, null, this);
     this.physics.add.collider(ball, BRICKS, hitBrick, null, null);
 
@@ -152,7 +209,6 @@ function isGameOver(world) {
     return ball.body.y > world.bounds.height;
 }
 //cette fonction donne vrai si tous les briques sont disparus
-
 const isWon = () => !BRICKS.countActive()
 
 function update() {
@@ -186,7 +242,7 @@ function update() {
 
                 gameStarted = true;
 
-                ball.setVelocityY(-415); // la velocité du ballon(on peut dire que c'est la vitesse)
+                ball.setVelocityY(-450); // la velocité du ballon(on peut dire que c'est la vitesse)
                 openingText.setVisible(false);
             }
         }
@@ -195,11 +251,11 @@ function update() {
         if (cursors.left.isDown) {
             //si on appuie sur la flèche gauche
 
-            player.body.setVelocityX(-380);
+            player.body.setVelocityX(-375);
         } else if (cursors.right.isDown) {
             //si on appuie sur la flèche droite
 
-            player.body.setVelocityX(380);
+            player.body.setVelocityX(375);
         }
         // TODO: Logic for regular game time
     }
@@ -207,17 +263,19 @@ function update() {
 
 //cette fonction permet de gérer les collision entre le ballon et les briques
 function hitBrick(ball, brick) {
-   
+
     brick.destroy()
 
     switch (brick.texture.key) {
 
-
-        case "greenbrick": BRICKS.create(brick.x, brick.y, 'redbrick'); break;
-        case "bluebrick": BRICKS.create(brick.x, brick.y, 'greenbrick'); break;
-        case "violetbrick": BRICKS.create(brick.x, brick.y, 'bluebrick'); break;
+        case "green" : BRICKS.create(brick.x, brick.y, 'red'   ); break;
+        case "blue"  : BRICKS.create(brick.x, brick.y, 'green' ); break;
+        case "violet": BRICKS.create(brick.x, brick.y, 'blue'  ); break;
 
     }
+
+    interval++;
+
 
     if (ball.body.velocity.x === 0) {
         randNum = Math.random();
@@ -233,10 +291,27 @@ function hitBrick(ball, brick) {
 
 //cette fonction permet de gérer les collision entre le ballon et le joueur
 function hitPlayer(ball, player) {
-    // on augmente la vélocité du ballon dès qu'elle touche le joueur
-    ball.setVelocityY(ball.body.velocity.y - 10);
 
-    let newXVelocity = Math.abs(ball.body.velocity.x) + 10;
+    if (interval >= 10) {
+        interval = 0;
+        BRICKS.children["entries"].forEach(element => {
+            element.y += H;
+            if (element.y > 600) {
+                gameOverText.setVisible(true);
+                ball.disableBody(true, true);
+            }
+        })
+    };
+
+    if (BRICKS.children["entries"].filter(element => element.y >= 25).length == 0) {
+        interval = 0;
+        BRICKS.children["entries"].forEach(element => { element.y += 5 * H })
+    }
+
+    // on augmente la vélocité du ballon dès qu'elle touche le joueur
+    ball.setVelocityY(ball.body.velocity.y - 20);
+
+    let newXVelocity = Math.abs(ball.body.velocity.x) + 20;
 
     // Si la balle est à gauche du joueur, assurez-vous que la vitesse X est négative
     if (ball.x < player.x) {

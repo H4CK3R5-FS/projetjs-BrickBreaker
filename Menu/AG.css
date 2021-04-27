@@ -288,16 +288,9 @@ h2 {
     transform: scale(0.96) translateX(-50%);
 }
 
-.Game .backtotop {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 30px;
-    border-radius: 40px;
-    background: #fff;
-    color: #2b1055;
-    font-size: 1.5em;
-    z-index: 9;
-    transform: translateY(100px);
-    align-items: center;
-    margin-top: -61%;
+#scrollUp {
+    position: fixed;
+    bottom: 10px;
+    right: -100px;
+    opacity: 0.5;
 }

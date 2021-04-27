@@ -6,6 +6,26 @@
     <link rel="stylesheet" type="text/css" href="AG.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
+    <script>
+        jQuery(function() {
+            $(function() {
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 200) {
+                        $('#scrollUp').css('right', '10px');
+                    } else {
+                        $('#scrollUp').removeAttr('style');
+                    }
+
+                });
+            });
+        });
+    </script>
+
+
+
+
 </head>
 
 <body>
@@ -88,22 +108,17 @@
 
         </div>
 
-        <section>
-            <div class="backtotop">
-                <a href="#">Home</a>
-            </div>
-
-        </section>
-
-
     </div>
 
 
-
+    <div id="scrollUp">
+        <a href="#top"><img src="to_top.png" /></a>
+    </div>
 
 
     <script src="main.js">
     </script>
+
 
 
 </body>
