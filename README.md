@@ -89,7 +89,10 @@ https://downloads.khinsider.com/game-soundtracks/album/new-super-mario-bros.-wii
 brick-breaker & menu :
 =====================
 
+Prototype du Brick breaker:
+------------------------------
 
+https://developer.mozilla.org/fr/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript
 
 Pour les maquettes des pages: 
 -------------------------------
